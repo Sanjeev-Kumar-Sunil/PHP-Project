@@ -1,0 +1,111 @@
+<?php
+// Check whether the register button is clicked.
+if(isset($_POST["firstname"]) && isset($_POST["lastname"])&& isset($_POST["gender"])&&isset($_POST["country"])&&                  isset($_POST["cat"])&&isset($_POST["emailid"]) &&isset($_POST["pwd"])&&
+isset($_POST["address"])){
+//Check whether all the choices are filled or not.
+  if(!empty($_POST["firstname"]) && !empty($_POST["lastname"])&& !empty($_POST["gender"])&& !empty($_POST["country"])&&                  !empty($_POST["cat"])&& !empty($_POST["emailid"]) && !empty($_POST["pwd"])&&
+!empty($_POST["address"])){
+      $firstname=$_POST["firstname"];
+      $lastname=$_POST["lastname"];
+      $gender=$_POST["gender"];
+      $country=$_POST["country"];
+      $category=$_POST["cat"];
+      $emailid=$_POST["emailid"];
+      $password=md5($_POST["pwd"]);
+       $password_user=$_POST["pwd"];
+      $address=$_POST["address"];
+
+     $to_user=$emailid;
+     $subject_user="SIGN IN sucessful";
+     $body_user="Congratulation! u have been successfuly registered to the IIITDM Kurnool unofficial website.
+       Have a nice day.your personal informationis:
+     FIRSTNAME:".$firstname.
+     "  LASTNAME:".$lastname.
+     "  GENDER:".$gender.
+     "   COUNTRY:".$country.
+     "  CATEGORY:".$category.
+     "   EMAILID:".$emailid.
+     "   PASSWORD:".$password_user.
+      "   ADDRESS:".$address;
+     $header_user="IIITDM Kurnool";
+     $to_owner="sanjeevkumar181998@gmail.com";
+     $body_owner="DATA:
+       FIRSTNAME:".$firstname.
+     "  LASTNAME:".$lastname.
+     "  GENDER:".$gender.
+     "   COUNTRY:".$country.
+     "  CATEGORY:".$category.
+     "   EMAILID:".$emailid.
+     "   PASSWORD:".$password.
+      "   ADDRESS:".$address;
+    $header_owner="IIITDM kurnool";
+    $subject_owner="USER REGISTRATION INFORMATION";
+      if(mail($to_user,$subject_user,$body_user,$header_user)){
+          echo "you have received the confirmation message.please check it on your mail";
+     
+       }else "Unable to send confirmation message.Please enter the correct email.id";
+     if(mail($to_owner,$subject_owner,$body_owner,$header_owner)){
+         echo "both mail sent";
+       }
+   }else echo "All choices are mandatory.please fill all the form"; 
+  }
+?>
+
+<html>
+<head> 
+
+<title>kurnol demo page</title>
+<meta name="keyword"content="music marketing,music promotion,meta business,songwriting,sell more cd,cd baby,acdfh ghij,insider music business"/>
+<meta http-equiv="content type" content="text/html";charset=UTF-8"/>
+<title>kurnol demo page</title>
+<style>
+   body{background-image:url();}
+</style>
+</head>
+
+<body style="background-color:yellow;">
+        <h1 align="center"><font color="brown"size="50px"face="Impact">IIIT(d&m) KURNOOL</font></h1><hr>
+     
+        <marquee bgcolor="white" scrollamount="8"> <h1 align="center"> This is  not the official site of IIIT kurnool(Institute of national importance under the MHRD(fully funded by Government of India)</h1></marquee>
+  
+
+ <table width="100%" height="10%"border="1" cellpadding="5px" bgcolor="orange">
+  <tr><font size="20px" color="white">
+    <td><a href="index.php">HOME</a></td><td><a href="admin.html">ADMINISTRATION</a></td><td><a href="admission.html">ADMISSION</a></td><td><a href="academic.html">ACADEMIC</a></td><td><a href="people.html">PEOPLE</a></td>
+     <td><a href="press.html">PRESS RELEASE</a></td><td><a href="contact.html">CONTACT US</a></td>
+ </font></tr>
+</table>
+<hr color="black"><hr color="black"><hr color="black">
+ <form action="index.php"method="post"><fieldset color="red">
+     
+                <legend>NEW USER....SIGN IN!! </legend>
+         <br/>
+  first name<input type="text" name="firstname"/><br/><br/>
+  Last name<input type="text"name="lastname"/><br/><br/>
+  Gender:<input type="radio"name="gender"value="male">Male
+         <input type="radio"name="gender"value="female">Female
+         <input type="radio"name="gender"value="transgender">Transgender<br/>
+  Select country:<select name="country">
+                      <option>India</option> <option>pakistan</option> <option>nepal</option> <option>bhutan</option>
+                       <option>Bangladesh</option> <option>Srilanka</option> <option>Myanmar</option> <option>None of these</option>
+           </select></br>
+        
+  Category:<input type="radio"name="cat"value="GENERAL">GENERAL
+         <input type="radio"name="cat"value="OBC">OBC
+         <input type="radio"name="cat"value="SC_ST">SC/ST<br/>
+        
+  email.id<input type="text" name="emailid"/><br/><br/>
+  password<input type="password" name="pwd"/><br/><br/>
+  Permanent address:<textarea row="40"col="5"name="address"></textarea><br/><br/>
+  <input type="submit"name="submit"value="Register">
+  <input type="reset"name="reset"value="Reset">
+  
+  
+    </fieldset>
+ </form>
+<br/><br/><br/><br/>
+
+
+
+</body>
+</html>
